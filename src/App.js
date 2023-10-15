@@ -1,23 +1,22 @@
-import { GoogleLogin } from '@react-oauth/google';
-import { GoogleOAuthProvider } from '@react-oauth/google';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
 import './App.css';
+import Hi from './hi';
+import Login from './components/loggin';
 
 function App() {
+
   return (
-    <div>Hi, Welcome
-      <GoogleOAuthProvider clientId="214278282169-1kav589ffe2qmn9l3jo6ulshg5blfm6g.apps.googleusercontent.com">
-        <GoogleLogin
-          onSuccess={credentialResponse => {
-            console.log(credentialResponse);
-          }}
-          onError={() => {
-            console.log('Login Failed');
-          }}
-        />
-      </GoogleOAuthProvider>;
-
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route>
+            <Route path="/" element={<Login/>}/>
+            <Route path="/Hi" element={<Hi/>}/>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
-
   );
 }
 
